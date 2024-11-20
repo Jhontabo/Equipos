@@ -1,137 +1,222 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.Iterator" %>
-<%@ page import="com.mycompany.sandoyorkk.Equipos" %>
-<%@ page import="com.mycompany.sandoyorkk.Partidos" %>
 <%@ page import="com.mycompany.sandoyorkk.Jugadores" %>
-
-
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Calendario de Partidos</title>
-        <link rel="stylesheet" href="style.css">
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f8f8f8;
-                color: #333;
-                margin: 0;
-                padding: 0;
-            }
-            header, nav, footer {
-                background-color: #1d3557;
-                color: white;
-                text-align: center;
-                padding: 10px 0;
-            }
-            nav a {
-                color: white;
-                text-decoration: none;
-                margin: 0 15px;
-            }
-            nav a:hover {
-                color: #00b300;
-            }
-            table {
-                width: 90%;
-                margin: 20px auto;
-                border-collapse: collapse;
-            }
-            table, th, td {
-                border: 1px solid #ddd;
-            }
-            th, td {
-                padding: 10px;
-                text-align: center;
-            }
-            th {
-                background-color: #1d3557;
-                color: white;
-            }
-            .actions {
-                text-align: center;
-                margin: 20px;
-            }
-            .btn {
-                background-color: #00b300;
-                color: white;
-                padding: 10px 15px;
-                text-decoration: none;
-                border-radius: 5px;
-                margin: 5px;
-                display: inline-block;
-            }
-            .btn:hover {
-                background-color: #008000;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1>Calendario de Partidos</h1>
-            <p>Consulta los próximos partidos de la Champions League.</p>
-        </header>
-        <nav>
-            <a href="index.jsp">Inicio</a>
-            <a href="LideresDeTorneo.jsp">Equipos Destacados</a>
-            <a href="EstadisticasDeCampeonato.jsp">Estadísticas de la Temporada</a>
-        </nav>
-        <main>
-            <section class="schedule">
-                <h2>Próximos Partidos</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Equipos</th>
-                            <th>Ubicación</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2024-11-25</td>
-                            <td>21:00 CET</td>
-                            <td>Real Madrid vs PSG</td>
-                            <td>Santiago Bernabéu</td>
-                        </tr>
-                        <tr>
-                            <td>2024-11-27</td>
-                            <td>20:45 CET</td>
-                            <td>Manchester City vs Bayern Múnich</td>
-                            <td>Etihad Stadium</td>
-                        </tr>
-                        <tr>
-                            <td>2024-11-29</td>
-                            <td>19:30 CET</td>
-                            <td>Barcelona vs Inter</td>
-                            <td>Camp Nou</td>
-                        </tr>
-                        <tr>
-                            <td>2024-12-01</td>
-                            <td>21:00 CET</td>
-                            <td>Juventus vs Chelsea</td>
-                            <td>Allianz Stadium</td>
-                        </tr>
-                        <tr>
-                            <td>2024-12-03</td>
-                            <td>19:45 CET</td>
-                            <td>Napoli vs Dortmund</td>
-                            <td>Diego Armando Maradona Stadium</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="actions">
-                    <a href="AgregarPartidos.jsp" class="btn">Añadir Partido</a>
-                    <a href="ActualizarPartidos.jsp" class="btn">Actualizar Partido</a>
-                    <a href="EliminarPartidos.jsp" class="btn">Eliminar Partido</a>
-                </div>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2024 Sandoyork. Todos los derechos reservados.</p>
-        </footer>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugadores - LÃ­deres de Goleo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, nav, footer {
+            background-color: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00b300;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #1d3557;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e9f5e9;
+        }
+
+        form {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+
+        form input, form select, form button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #00b300;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        form button:hover {
+            background-color: #008000;
+        }
+
+        footer {
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jugadores - LÃ­deres de Goleo</h1>
+        <p>Descubre los jugadores destacados de esta temporada.</p>
+    </header>
+
+    <nav>
+         <ul>
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="Equipos.jsp">Equipos</a></li>
+                    <li><a href="Jugadores.jsp">Calendario</a></li>
+                    <li><a href="Partidos.jsp">EstadÃ­sticas</a></li>
+                </ul>
+    </nav>
+
+    <main>
+        <!-- Formulario para agregar un nuevo jugador -->
+        <form action="JugadoresServlet" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="action" value="agregar">
+            <label>Nombre del Jugador:</label>
+            <input type="text" name="nombre" required>
+
+            <label>PosiciÃ³n:</label>
+            <input type="text" name="posicion" required>
+
+            <label>Fecha de Nacimiento (YYYY):</label>
+            <input type="number" name="fecha_nacimiento" required min="1900" max="2100">
+
+            <label>Altura (cm):</label>
+            <input type="text" name="altura" required>
+
+            <label>Peso (kg):</label>
+            <input type="text" name="peso" required>
+
+            <label>NÃºmero de Camiseta:</label>
+            <input type="number" name="numero_camiseta" required>
+
+            <label>Equipo:</label>
+            <input type="text" name="equipo" required>
+
+            <label>Estado:</label>
+            <input type="text" name="estado" required>
+
+            <label>Imagen:</label>
+            <input type="file" name="image" accept="image/*">
+
+            <button type="submit">AÃ±adir Jugador</button>
+        </form>
+
+        <!-- Tabla de jugadores -->
+        <section>
+            <h2>Jugadores Destacados</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jugador</th>
+                        <th>PosiciÃ³n</th>
+                        <th>Equipo</th>
+                        <th>Estado</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        ArrayList<Jugadores> jugadores = (ArrayList<Jugadores>) request.getAttribute("jugadores");
+                        if (jugadores != null) {
+                            for (Jugadores jugador : jugadores) {
+                    %>
+                    <tr>
+                        <td><%= jugador.getNombre() %></td>
+                        <td><%= jugador.getPosicion() %></td>
+                        <td><%= jugador.getEquipo() %></td>
+                        <td><%= jugador.getEstado() %></td>
+                        <td>
+                            <% if (jugador.getImage() != null && !jugador.getImage().isEmpty()) { %>
+                                <img src="imagenes/<%= jugador.getImage() %>" alt="<%= jugador.getNombre() %>" width="50">
+                            <% } else { %>
+                                Sin Imagen
+                            <% } %>
+                        </td>
+                        <td>
+                            <div class="actions">
+                                <form action="JugadoresServlet" method="get" style="display:inline;">
+                                    <input type="hidden" name="action" value="editar">
+                                    <input type="hidden" name="id" value="<%= jugador.getID() %>">
+                                    <button type="submit" class="btn">Editar</button>
+                                </form>
+
+                                <form action="JugadoresServlet" method="post" style="display:inline;">
+                                    <input type="hidden" name="action" value="eliminar">
+                                    <input type="hidden" name="id" value="<%= jugador.getID() %>">
+                                    <button type="submit" class="btn" onclick="return confirm('Â¿Seguro que deseas eliminar este jugador?')">Eliminar</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    <%
+                            }
+                        } else {
+                    %>
+                    <tr>
+                        <td colspan="6">No hay jugadores registrados.</td>
+                    </tr>
+                    <%
+                        }
+                    %>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Sandoyork. Todos los derechos reservados.</p>
+    </footer>
+</body>
 </html>

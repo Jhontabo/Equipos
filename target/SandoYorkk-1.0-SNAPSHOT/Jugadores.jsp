@@ -110,10 +110,12 @@
     </header>
 
     <nav>
-        <a href="index.jsp">Inicio</a>
-        <a href="Jugadores.jsp">Jugadores</a>
-        <a href="Partidos.jsp">Partidos</a>
-        <a href="Equipos.jsp">Equipos</a>
+         <ul>
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="Equipos.jsp">Equipos</a></li>
+                    <li><a href="Jugadores.jsp">Calendario</a></li>
+                    <li><a href="Partidos.jsp">Estadísticas</a></li>
+                </ul>
     </nav>
 
     <main>
