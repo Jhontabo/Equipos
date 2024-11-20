@@ -18,29 +18,49 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "JugadoresServlet", urlPatterns = {"/JugadoresServlet"})
+@WebServlet("/JugadoresServlet")
 @MultipartConfig
 public class JugadoresServlet extends HttpServlet {
-    private static List<Jugadores> listaJugadores = new ArrayList<>();
     private static int contadorID = 1;
+    private static List<Jugadores> listaJugadores = new ArrayList<>();
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        if (listaJugadores.isEmpty()) {
+            // Agregar algunos jugadores de ejemplo
+            listaJugadores.add(new Jugadores(contadorID++, "Lionel Messi", "Delantero", 1987, "170 cm", "72 kg", 10, "Paris Saint-Germain", "Activo", "messi.jpg"));
+            listaJugadores.add(new Jugadores(contadorID++, "Cristiano Ronaldo", "Delantero", 1985, "187 cm", "83 kg", 7, "Al Nassr", "Activo", "cristiano.jpg"));
+            listaJugadores.add(new Jugadores(contadorID++, "Neymar Jr", "Delantero", 1992, "175 cm", "68 kg", 11, "Al Hilal", "Activo", "neymar.jpg"));
+        }
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
         if ("editar".equalsIgnoreCase(action)) {
-            int id = Integer.parseInt(request.getParameter("id"));
-            Jugadores jugador = buscarJugadorPorId(id);
-            if (jugador != null) {
-                request.setAttribute("jugador", jugador); // Pasamos el jugador al JSP
-                request.getRequestDispatcher("EditarJugador.jsp").forward(request, response);
-            } else {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Jugador no encontrado");
-            }
+            cargarDatosEdicion(request, response);
         } else {
             request.setAttribute("jugadores", listaJugadores);
             request.getRequestDispatcher("Jugadores.jsp").forward(request, response);
         }
+    }
+
+    private void cargarDatosEdicion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        // Buscar el jugador por ID en la lista de jugadores
+        Jugadores jugadorEditado = buscarJugadorPorId(id);
+
+        if (jugadorEditado == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Jugador no encontrado");
+            return;
+        }
+
+        // Pasar los datos del jugador a la página de edición
+        request.setAttribute("jugador", jugadorEditado);
+        request.getRequestDispatcher("EditarJugador.jsp").forward(request, response);
     }
 
     @Override
@@ -51,11 +71,11 @@ public class JugadoresServlet extends HttpServlet {
             if ("agregar".equalsIgnoreCase(action)) {
                 agregarJugador(request);
             } else if ("editar".equalsIgnoreCase(action)) {
-                editarJugador(request);
+                editarJugador(request, response);
             } else if ("eliminar".equalsIgnoreCase(action)) {
                 eliminarJugador(request);
             }
-            response.sendRedirect("JugadoresServlet");  // Redirigir a la lista actualizada
+            response.sendRedirect("JugadoresServlet");
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("error.jsp");
@@ -82,7 +102,7 @@ public class JugadoresServlet extends HttpServlet {
         listaJugadores.add(nuevoJugador);
     }
 
-    private void editarJugador(HttpServletRequest request) throws IOException, ServletException {
+    private void editarJugador(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
         String nombre = request.getParameter("nombre");
         String posicion = request.getParameter("posicion");
@@ -109,6 +129,9 @@ public class JugadoresServlet extends HttpServlet {
                 String fileName = guardarImagen(filePart);
                 jugador.setImage(fileName);
             }
+        } else {
+            request.setAttribute("errorMessage", "Jugador no encontrado para editar.");
+            request.getRequestDispatcher("Jugadores.jsp").forward(request, response);
         }
     }
 
