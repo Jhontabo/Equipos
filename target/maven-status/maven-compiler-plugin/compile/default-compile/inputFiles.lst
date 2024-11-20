@@ -1,0 +1,17 @@
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/com/mycompany/sandoyorkk/Equipos.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/com/mycompany/sandoyorkk/Jugadores.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/servlets/EliminarJugadores.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/servlets/EquiposServlet.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/com/mycompany/sandoyorkk/CRUDEquipos.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/servlets/AgregarJugadores.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/com/mycompany/sandoyorkk/CRUDJugadores.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/com/mycompany/sandoyorkk/JakartaRestConfiguration.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/com/mycompany/sandoyorkk/resources/JakartaEE10Resource.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/servlets/ActualizarPartidos.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/servlets/ActualizarEquipo.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/servlets/AgregarPartidos.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/com/mycompany/sandoyorkk/CRUDPartidos.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/servlets/EliminarPartidos.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/com/mycompany/sandoyorkk/Partidos.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/servlets/ActualizarJugadores.java
+/home/jhontabo/Develop/java/SandoYorkk/src/main/java/servlets/EliminarEquipo.java

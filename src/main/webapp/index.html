@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido - Champions League</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #343a40;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .logo {
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            background-color: #ff6f61;
+            color: #ffffff;
+        }
+
+        /* Header */
+        .header {
+            background-color: #495057;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* Sections */
+        .sections {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .section {
+            background-color: white;
+            width: 300px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #343a40;
+        }
+
+        .section p {
+            color: #555;
+            font-size: 16px;
+        }
+
+        .section a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .section a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Champions League</div>
+        <ul>
+            <li><a href="index.html" class="active">Inicio</a></li>
+            <li><a href="Equipos.jsp">Equipos</a></li>
+            <li><a href="Calendario.jsp">Calendario</a></li>
+            <li><a href="Estadisticas.jsp">Estadísticas</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Bienvenido a la Champions League</h1>
+        <p>Descubre equipos, estadísticas y más sobre la mejor competición de fútbol</p>
+    </div>
+
+    <!-- Sections -->
+    <div class="sections">
+        <div class="section">
+            <h2>Equipos Participantes</h2>
+            <p>Consulta los equipos que forman parte de esta edición de la Champions League.</p>
+            <a href="Equipos.jsp">Ver Equipos</a>
+        </div>
+        <div class="section">
+            <h2>Calendario</h2>
+            <p>Accede al calendario de partidos y no te pierdas ningún encuentro.</p>
+            <a href="Calendario.jsp">Ver Calendario</a>
+        </div>
+        <div class="section">
+            <h2>Estadísticas</h2>
+            <p>Consulta las estadísticas más relevantes de la temporada.</p>
+            <a href="Estadisticas.jsp">Ver Estadísticas</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Champions League. Todos los derechos reservados.</p>
+    </footer>
+</body>
+
+</html>

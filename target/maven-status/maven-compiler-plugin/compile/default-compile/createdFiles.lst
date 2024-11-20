@@ -1,0 +1,6 @@
+com/mycompany/sandoyorkk/resources/JakartaEE10Resource.class
+com/mycompany/sandoyorkk/Partidos.class
+com/mycompany/sandoyorkk/Equipo.class
+servlets/EquipoServlet.class
+com/mycompany/sandoyorkk/Jugadores.class
+com/mycompany/sandoyorkk/JakartaRestConfiguration.class
